@@ -1,6 +1,7 @@
 package org.launchcode.techjobs_oo;
 
 import java.util.Objects;
+import java.util.ArrayList;
 
 public class Job {
 
@@ -12,20 +13,22 @@ public class Job {
     private Location location;
     private PositionType positionType;
     private CoreCompetency coreCompetency;
+    private ArrayList<Object> index;
 
     // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
     //  other five fields. The second constructor should also call the first in order to initialize
     //  the 'id' field.
 
-    public Job(){
+    public Job() {
         id = nextId;
         nextId++;
     }
+
     public Job(String name,
                Employer employer,
                Location location,
                PositionType positionType,
-               CoreCompetency coreCompetency){
+               CoreCompetency coreCompetency) {
         this();
         this.name = name;
         this.employer = employer;
@@ -49,6 +52,35 @@ public class Job {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    //Add toString method
+    @Override
+    public String toString() {
+        String notFound = "Data not available";
+        String namE = getName();
+        String employeR = getEmployer().toString();
+        String locatioN = getLocation().toString();
+        String positionTypE = getPositionType().toString();
+        String coreCompetencY = getCoreCompetency().toString();
+
+        if(namE == null || namE == ""){
+            namE = notFound;
+        }if(employeR == null || employeR == ""){
+            employeR = notFound;
+        }if(locatioN == null || locatioN == ""){
+            locatioN = notFound;
+        }if(positionTypE == null || positionTypE == ""){
+            positionTypE = notFound;
+        }if(coreCompetencY == null || coreCompetencY == ""){
+            coreCompetencY = notFound;
+        }
+        return "\nID: " + id + "\n" +
+                    "Name: " + namE + "\n" +
+                    "Employer: " + employeR + "\n" +
+                    "Location: " + locatioN + "\n" +
+                    "Position Type: " + positionTypE + "\n" +
+                    "Core Competency: " + coreCompetencY + "\n";
+        }
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.

@@ -11,42 +11,96 @@ public class JobTest {
     Job testJob2;
     Job testJob3;
     Job testJob4;
+    Job testJob5;
+
     @Before
-    public void createJobObj() {testJob = new Job();}
+    public void createJobObj() {
+        testJob = new Job();
+    }
+
     @Before
-    public void createSecondJobObj(){testJob2 = new Job();}
+    public void createSecondJobObj() {
+        testJob2 = new Job();
+    }
+
     @Before
-    public void createThirdJobObj(){
+    public void createThirdJobObj() {
         testJob3 = new Job(
-            "Product tester",
-            new Employer("ACME"),
-            new Location("Desert"),
-            new PositionType("Quality control"),
-            new CoreCompetency("Persistence"));}
-     @Before
-     public void createFourthJobObj(){
+                "Product tester",
+                new Employer("ACME"),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
+    }
+
+    @Before
+    public void createFourthJobObj() {
         testJob4 = new Job(
-                 "Product tester",
-                 new Employer("ACME"),
-                 new Location("Desert"),
-                 new PositionType("Quality control"),
-                 new CoreCompetency("Persistence"));}
+                "Product tester",
+                new Employer("ACME"),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
+    }
+
+    @Before
+    public void createFifthJobObj() {
+        testJob5 = new Job(
+                "Product tester",
+                new Employer("ACME"),
+                new Location(""),
+                new PositionType("Quality control"),
+                new CoreCompetency(""));
+    }
 
     @Test
-    public void testSettingJobId(){
+    public void testSettingJobId() {
         assertEquals(1, testJob.getId(), .001);
         assertEquals(2, testJob2.getId(), .001);
     }
+
     @Test
-    public void testJobConstructorSetsAllFields(){
+    public void testJobConstructorSetsAllFields() {
         assertTrue(testJob3 instanceof Job);
         assertEquals("Product tester", testJob3.getName());
         assertTrue(testJob3.getEmployer() instanceof Employer);
         assertTrue(testJob3.getLocation() instanceof Location);
         assertTrue(testJob3.getCoreCompetency() instanceof CoreCompetency);
     }
+
     @Test
-    public void testJobsForEquality(){
-        assertFalse(testJob3.getId() == testJob4.getId());
+    public void testJobsForEquality() {
+        assertFalse(testJob3.equals(testJob4));
     }
+
+    @Test
+    public void testToStringToHaveBlankLinesBeforeAndAfter() {
+        assertEquals("\nID: 3\n" +
+                "Name: Product tester\n" +
+                "Employer: ACME\n" +
+                "Location: Desert\n" +
+                "Position Type: Quality control\n" +
+                "Core Competency: Persistence\n", testJob3.toString());
+    }
+
+    @Test
+    public void testToStringToHaveLabelsForEachField() {
+        assertEquals("\nID: 3\n" +
+                "Name: Product tester\n" +
+                "Employer: ACME\n" +
+                "Location: Desert\n" +
+                "Position Type: Quality control\n" +
+                "Core Competency: Persistence\n", testJob3.toString());
+    }
+
+    @Test
+    public void testEmptyFieldToRespondDataNotAvailable(){
+        assertEquals("\nID: 4\n" +
+                "Name: Product tester\n" +
+                "Employer: ACME\n" +
+                "Location: Data not available\n" +
+                "Position Type: Quality control\n" +
+                "Core Competency: Data not available\n", testJob5.toString());
+   }
 }
+
