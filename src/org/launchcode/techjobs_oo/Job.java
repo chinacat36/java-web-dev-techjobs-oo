@@ -15,10 +15,6 @@ public class Job {
     private CoreCompetency coreCompetency;
     private ArrayList<Object> index;
 
-    // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
-    //  other five fields. The second constructor should also call the first in order to initialize
-    //  the 'id' field.
-
     public Job() {
         id = nextId;
         nextId++;
@@ -34,26 +30,20 @@ public class Job {
         this.employer = employer;
         this.location = location;
         this.positionType = positionType;
-        this.coreCompetency = coreCompetency;
-    }
-
-    // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
-    //  match.
+        this.coreCompetency = coreCompetency; }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Job job = (Job) o;
-        return id == job.id;
-    }
+        return id == job.id; }
 
     @Override
     public int hashCode() {
         return Objects.hash(id);
     }
 
-    //Add toString method
     @Override
     public String toString() {
         String notFound = "Data not available";
@@ -62,16 +52,17 @@ public class Job {
         String locatioN = getLocation().toString();
         String positionTypE = getPositionType().toString();
         String coreCompetencY = getCoreCompetency().toString();
+        String oops = "OOPS! This job does not seem to exist.";
 
         if(namE == null || namE == ""){
             namE = notFound;
-        }if(employeR == null || employeR == ""){
+        }else if(employeR == null || employeR == ""){
             employeR = notFound;
-        }if(locatioN == null || locatioN == ""){
+        }else if(locatioN == null || locatioN == ""){
             locatioN = notFound;
-        }if(positionTypE == null || positionTypE == ""){
+        }else if(positionTypE == null || positionTypE == ""){
             positionTypE = notFound;
-        }if(coreCompetencY == null || coreCompetencY == ""){
+        }else if(coreCompetencY == null || coreCompetencY == ""){
             coreCompetencY = notFound;
         }
         return "\nID: " + id + "\n" +
@@ -81,9 +72,6 @@ public class Job {
                     "Position Type: " + positionTypE + "\n" +
                     "Core Competency: " + coreCompetencY + "\n";
         }
-
-    // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
-    //  and id.
 
     public int getId() {
         return id;
