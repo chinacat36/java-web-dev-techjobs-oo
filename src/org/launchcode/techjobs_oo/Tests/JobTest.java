@@ -16,35 +16,19 @@ public class JobTest {
     @Before
     public void createJobObj() {
         testJob = new Job();
-    }
-
-    @Before
-    public void createSecondJobObj() {
         testJob2 = new Job();
-    }
-
-    @Before
-    public void createThirdJobObj() {
         testJob3 = new Job(
                 "Product tester",
                 new Employer("ACME"),
                 new Location("Desert"),
                 new PositionType("Quality control"),
                 new CoreCompetency("Persistence"));
-    }
-
-    @Before
-    public void createFourthJobObj() {
         testJob4 = new Job(
                 "Product tester",
                 new Employer("ACME"),
                 new Location("Desert"),
                 new PositionType("Quality control"),
                 new CoreCompetency("Persistence"));
-    }
-
-    @Before
-    public void createFifthJobObj() {
         testJob5 = new Job(
                 "Product tester",
                 new Employer("ACME"),
@@ -95,7 +79,7 @@ public class JobTest {
 
     @Test
     public void testEmptyFieldToRespondDataNotAvailable(){
-        assertEquals("\nID: 4\n" +
+        assertEquals("\nID: 5\n" +
                 "Name: Product tester\n" +
                 "Employer: ACME\n" +
                 "Location: Data not available\n" +

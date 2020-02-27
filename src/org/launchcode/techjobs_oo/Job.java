@@ -30,14 +30,16 @@ public class Job {
         this.employer = employer;
         this.location = location;
         this.positionType = positionType;
-        this.coreCompetency = coreCompetency; }
+        this.coreCompetency = coreCompetency;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Job job = (Job) o;
-        return id == job.id; }
+        return id == job.id;
+    }
 
     @Override
     public int hashCode() {
@@ -54,24 +56,24 @@ public class Job {
         String coreCompetencY = getCoreCompetency().toString();
         String oops = "OOPS! This job does not seem to exist.";
 
-        if(namE == null || namE == ""){
+        if (namE == null || namE == "") {
             namE = notFound;
-        }else if(employeR == null || employeR == ""){
+        } if (employeR == null || employeR == "") {
             employeR = notFound;
-        }else if(locatioN == null || locatioN == ""){
+        } if (locatioN == null || locatioN == "") {
             locatioN = notFound;
-        }else if(positionTypE == null || positionTypE == ""){
+        } if (positionTypE == null || positionTypE == "") {
             positionTypE = notFound;
-        }else if(coreCompetencY == null || coreCompetencY == ""){
+        } if (coreCompetencY == null || coreCompetencY.equals("")) {
             coreCompetencY = notFound;
         }
         return "\nID: " + id + "\n" +
-                    "Name: " + namE + "\n" +
-                    "Employer: " + employeR + "\n" +
-                    "Location: " + locatioN + "\n" +
-                    "Position Type: " + positionTypE + "\n" +
-                    "Core Competency: " + coreCompetencY + "\n";
-        }
+                "Name: " + namE + "\n" +
+                "Employer: " + employeR + "\n" +
+                "Location: " + locatioN + "\n" +
+                "Position Type: " + positionTypE + "\n" +
+                "Core Competency: " + coreCompetencY + "\n";
+    }
 
     public int getId() {
         return id;
